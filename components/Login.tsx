@@ -15,9 +15,9 @@ import Pusher from "pusher-js"
 
 const initPusher = () => {
     Pusher.logToConsole = false;
-    return new Pusher(process.env["NEXT_PUBLIC_PUSHER_KEY"]!, {
+    return new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY!, {
        // Specify the Pusher cluster (in this case, Asia Pacific 2)
-       cluster: 'ap2',
+       cluster: 'mt1',
        // Configure channel authorization
         // channelAuthorization: {
         //     // Specify an endpoint for authorizing private/presence channels
@@ -33,7 +33,7 @@ const Login = () => {
 
     const getQRCode = async () => {
         try {
-            let res = await axios.get('http://localhost:3001/api/generate-qr');
+            let res = await axios.get('api/generate-qr');
             setQrData(res.data.data)
             console.log(res.data.data,'');
             
